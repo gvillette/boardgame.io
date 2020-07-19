@@ -191,6 +191,9 @@ describe('lobby', () => {
 
     describe('create a room', () => {
       test('when the server request succeeds', async () => {
+        jsonResult.push(() => {
+          return { gameID: 'ABC123' };
+        });
         await lobby.create('game1', 2);
         expect(fetch).toHaveBeenCalledTimes(4);
       });
@@ -202,6 +205,9 @@ describe('lobby', () => {
         }
       });
       test('when the number of players has no boundaries', async () => {
+        jsonResult.push(() => {
+          return { gameID: 'ABC123' };
+        });
         await lobby.create('game2', 1);
       });
       test('when the game is unknown', async () => {

@@ -137,10 +137,11 @@ class Lobby extends React.Component {
 
   _createRoom = async (gameName, numPlayers) => {
     try {
-      await this.connection.create(gameName, numPlayers);
+      const resp = await this.connection.create(gameName, numPlayers);
       await this.connection.refresh();
       // rerender
       this.setState({});
+      return resp;
     } catch (error) {
       this.setState({ errorMsg: error.message });
     }

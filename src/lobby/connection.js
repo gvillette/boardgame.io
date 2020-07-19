@@ -146,6 +146,7 @@ class _LobbyConnectionImpl {
         headers: { 'Content-Type': 'application/json' },
       });
       if (resp.status !== 200) throw new Error('HTTP status ' + resp.status);
+      return resp.json();
     } catch (error) {
       throw new Error(
         'failed to create room for ' + gameName + ' (' + error + ')'
